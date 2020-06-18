@@ -26,3 +26,13 @@ DOMDisplay.prototype.drawBackground = function () {
 
     return table;
 }
+
+DOMDisplay.prototype.drawActors = function (){
+    let actorWrap = createElement('div');
+    this.level.actors.map(actor => {
+        let actorElement = createElement('div', `actor ${actor.type}`);
+        let rect = actorWrap.appendChild(actorElement);
+        rect.style.width = actor.size.x;
+        rect.style.height = actor.size.y;
+    });
+}

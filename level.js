@@ -27,7 +27,6 @@ function Level(plan){
 
             if (character === 'x') characterType = 'wall';
             else if (character === '!') characterType = 'lava';
-            else if (character === 'o') characterType = 'coin';
             
             gridLine.push(characterType);
         }
@@ -40,3 +39,4 @@ function Level(plan){
 Level.prototype.isFinished = function (){
     return (this.status !== null && this.finishDelay < 0);
 }
+
