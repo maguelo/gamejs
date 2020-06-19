@@ -23,6 +23,10 @@
     background: white;
 }
 
+.actor {
+    position: absolute;
+}
+
 .coin {
-    background: yellow;
+    background: rgb(240, 230, 90);
 }

@@ -10,7 +10,9 @@ function createElement(type, className){
 function DOMDisplay (parent, level){
     this.wrap = parent.appendChild(createElement('div', 'game'));
     this.level = level;
+
     this.wrap.appendChild(this.drawBackground());
+    this.wrap.appendChild(this.drawActors());
 }
 
 DOMDisplay.prototype.drawBackground = function () {
@@ -27,12 +29,16 @@ DOMDisplay.prototype.drawBackground = function () {
     return table;
 }
 
-DOMDisplay.prototype.drawActors = function (){
-    let actorWrap = createElement('div');
+DOMDisplay.prototype.drawActors = function () {
+    let actorsWrap = createElement('div');
     this.level.actors.map(actor => {
         let actorElement = createElement('div', `actor ${actor.type}`);
-        let rect = actorWrap.appendChild(actorElement);
-        rect.style.width = actor.size.x;
-        rect.style.height = actor.size.y;
+        let rect = actorsWrap.appendChild(actorElement);
+        rect.style.width = actor.size.x * SCALE + 'px';
+        rect.style.height = actor.size.y * SCALE  + 'px';
+        rect.style.left = actor.position.x * SCALE + 'px';
+        rect.style.top = actor.position.y * SCALE + 'px';
     });
+
+    return actorsWrap;
 }
