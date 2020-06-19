@@ -41,6 +41,7 @@ function runAnimation(frameFunction){
 function runLevel (level, Display, callback){
     let display = new Display(document.body, level);
     runAnimation(function (step){
+        level.animate(step, arrows);
         display.drawFrame();
 
         if (level.isFinished()){

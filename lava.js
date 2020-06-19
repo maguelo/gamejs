@@ -9,9 +9,13 @@ function Lava(initialPosition, characterType){
         this.speed = new Vector(0, 2);
     else if (characterType === 'v'){
         this.speed = new Vector(0, 3);
-        this.repeatPosition = initialPosition;
+        this.respawnPosition = initialPosition;
     }
 
 }
 
 Lava.prototype.type = "lava";
+
+Lava.prototype.act = function (step, level){
+    
+}
