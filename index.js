@@ -55,7 +55,13 @@ function runLevel (level, Display, callback){
 
 
 function runGame(level, Display){
-    let levelObject = new Level(level);
+    let levelObject;
+    try{
+        levelObject = new Level(level);
+    }catch(error){
+        return alert(error.message);
+    }
+    
     runLevel(levelObject, Display, status => {
         if (status === 'lost') 
             console.log('Has perdido');
