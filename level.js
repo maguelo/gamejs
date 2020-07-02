@@ -45,7 +45,9 @@ function Level(plan){
         }
         this.grid.push(gridLine);
     }
-    this.actor = this.actors.filter(actor => actor.type === 'player')[0];
+
+    this.player = this.actors.filter(actor => actor.type === 'player')[0];
+
 }
 
 

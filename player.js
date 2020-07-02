@@ -45,9 +45,9 @@ Player.prototype.moveY = function(step, level, keys){
         }else{
             this.speed.y = 0;
         }
-    }else
+    }else{
         this.position = newPosition;
-
+    }
 
 }
 
@@ -57,4 +57,9 @@ Player.prototype.act = function (step, level, keys){
 
     let otherActor = level.actorAt(this);
     if (otherActor) level.playerTouched(otherActor.type, otherActor);
+
+    if (level.status === 'lost'){
+        this.position.y +=  step;
+        this.size.y -= step;
+    }
 }
