@@ -9,6 +9,8 @@ const ACTORS = {
 
 const MAX_STEP = 0.05;
 
+const gameAudio = new Audio('./sounds/coin.wav');
+
 function Level(plan){
     if (! validateLevel(plan)){
         throw new Error("You need a player and a coin");
@@ -88,6 +90,8 @@ Level.prototype.playerTouched = function (type, actor) {
         this.status = 'lost';
         this.finishDelay = 1;
     }else if (type === 'coin'){
+        playAudio();
+        
         this.actors = this.actors.filter(otherActor => otherActor !== actor);
         if (!remainCoins(this.actors)){
             this.status = 'won';
@@ -117,4 +121,10 @@ function validateLevel(level){
 
 function remainCoins (actors){
     return actors.some(actor => actor.type === 'coin');
+}
+
+function playAudio(){
+    gameAudio.pause();
+    gameAudio.currentTime=0;
+    gameAudio.play();
 }
