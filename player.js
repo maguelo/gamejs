@@ -56,5 +56,5 @@ Player.prototype.act = function (step, level, keys){
     this.moveY(step, level, keys);
 
     let otherActor = level.actorAt(this);
-    if (otherActor) console.log(otherActor);
+    if (otherActor) level.playerTouched(otherActor.type, otherActor);
 }
