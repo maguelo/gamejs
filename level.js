@@ -95,6 +95,20 @@ Level.prototype.playerTouched = function (type) {
     }
 }
 
+Level.prototype.actorAt = function(actor){
+    for (let i =0; i< this.actors.length; i++){
+        let other = this.actors[i];
+        if (actor !== other && 
+                    actor.position.x + actor.size.x > other.position.x &&
+                    actor.position.x < other.position.x + other.size.x &&
+                    actor.position.y + actor.size.y > other.position.y &&
+                    actor.position.y < other.position.y + other.size.y){
+                
+            return other;
+        }
+    }            
+}
+
 function validateLevel(level){
     return level.some(row => row.indexOf('@') !== -1) && level.some(row => row.indexOf('o') !== -1);
 }

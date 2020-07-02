@@ -54,4 +54,7 @@ Player.prototype.moveY = function(step, level, keys){
 Player.prototype.act = function (step, level, keys){
     this.moveX(step, level, keys);
     this.moveY(step, level, keys);
+
+    let otherActor = level.actorAt(this);
+    if (otherActor) console.log(otherActor);
 }
