@@ -54,21 +54,27 @@ function runLevel (level, Display, callback){
 }
 
 
-function runGame(level, Display){
-    let levelObject;
-    try{
-        levelObject = new Level(level);
-    }catch(error){
-        return alert(error.message);
-    }
-    
-    runLevel(levelObject, Display, status => {
-        if (status === 'lost') 
-            console.log('Has perdido');
-        else
-            console.log('Has ganado !!!') 
-    
-    });
+function runGame(levels, Display){
+    function startLevel(levelNumber){
+        let levelObject;
+        try{
+            levelObject = new Level(levels[levelNumber]);
+        }catch(error){
+            return alert(error.message);
+        }
         
+        runLevel(levelObject, Display, status => {
+            if (status === 'lost'){
+                console.log('Has perdido');
+                startLevel(levelNumber);
+            }else if (levelNumber< levels.length - 1 ) {
+                
+                startLevel(levelNumber+1);
+            }else{
+                alert('Has ganado !!!');
+            }
+        });
+    }
+    startLevel(0);
 }
 runGame(GAME_LEVELS, DOMDisplay);
