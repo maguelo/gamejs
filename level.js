@@ -81,6 +81,24 @@ Level.prototype.obstacleAt = function (position, size){
     }
 }
 
+Level.prototype.playerTouched = function (type, actor) {
+    if (type ==='lava' && this.status === null){
+        this.status = 'lost';
+        this.finishDelay = 1;
+    }else if (type === 'coin'){
+        this.actors = this.actors.filter(otherActor => otherActor !== actor);
+        if (!remainCoins(this.actors)){
+            this.status = 'won';
+            this.finishDelay = 2;
+        }
+
+    }
+}
+
 function validateLevel(level){
     return level.some(row => row.indexOf('@') !== -1) && level.some(row => row.indexOf('o') !== -1);
+}
+
+function remainCoins (actors){
+    return actors.some(actor => actor.type === 'coin');
 }
