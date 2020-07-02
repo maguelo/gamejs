@@ -64,11 +64,11 @@ Level.prototype.animate = function (step, keys){
 
 }
 
-Level.prototype.obstableAt = function (position, size){
+Level.prototype.obstacleAt = function (position, size){
     let xStart = Math.floor(position.x);
-    let xEnd = Math.ceil(position.x);
+    let xEnd = Math.ceil(position.x  + size.x);
     let yStart = Math.floor(position.y);
-    let yEnd = Math.ceil(position.y);
+    let yEnd = Math.ceil(position.y + size.y);
 
     if (xStart< 0 ||  xEnd > this.width || yStart < 0) return 'wall';
     if (yEnd > this.height) return 'lava';
