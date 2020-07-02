@@ -81,7 +81,7 @@ Level.prototype.obstacleAt = function (position, size){
     }
 }
 
-Level.prototype.playerTouched = function (type, actor) {
+Level.prototype.playerTouched = function (type) {
     if (type ==='lava' && this.status === null){
         this.status = 'lost';
         this.finishDelay = 1;
